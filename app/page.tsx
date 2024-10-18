@@ -1,101 +1,130 @@
-import Image from "next/image";
+import Link from "next/link";
+import TagImage from "../public/Tag.jpeg";
+import TestimonialSlider from "./testmonilas/_components/testimonials-slider";
+// import TestimonialSliderCard from "./testmonilas/_components/testimonials-slider-card";
+
+const testimonials = [
+  {
+    quote:
+      "الكورس مفيد جدا بشكل في العلاقات عموما اما من جانب المبيعا فهو ممتاز و شامل كل اساليب البيع من الالف الي الياء و عملي جدا و في مرونه عاليه ايا كان المنتج اللي بتبيعه او بتبيع عن طريق ايه هتستفاد جدا ",
+    name: "Ahmed Ashraf",
+    role: "",
+    imgSrc: "",
+  },
+  {
+    quote:
+      "  أنا برشح كورس المبيعات ده وبقوة الصراحة  ، مش بس عشان المحتوى العلمي اللي لا يعلى عليه الصراحة سواء من ناحية جودة المعلومات أو حتى بساطة وسهولة توصيل المعلومة يخلي حتى الطفل يفهم ، ولكن كمان الكورس هيساعدك بشكل ما أنك تفهم الناس اللي حواليك على الصعيد الاجتماعي وتفهم دماغهم ومش محتاج أتكلم عن قد أيه الباشمهندس تاج راجل محترم وعلى خلق أحسبه كذلك ، وأحسبه أيضاً من الصالحين ولا أزكيه على الله وفقك الله يا هندسة ومن تقدم لتقدم إن شاء الله تعالى 🤍🤍",
+
+    name: "Mostafa R. Refaiy",
+    role: "",
+    imgSrc: "",
+  },
+  {
+    quote:
+      "المهندس عبدالرحمن تاج اعرفه من حوالى 3 سنين حقيقى من الناس اللى أثرت فيا فرق السن بينا سنة واحدة إلا إنه تبارك الله تميز فى حاجات كتير وكان ملهم ليا إنى فى السن دا اقدر اعمل حاجات كتير، بالنسبة لكورس السيلز هو عبارة عن خطوات عملية هتمشى عليها هتوصلك فى النهاية لاتمام البيعة باذن الله الخطوات منتقاه من كتب كورسات كتير فى السيلز هتفهم العميل بيفكر ازاى وتتعامل معاه بأى طريقة هترد على اعتراضاتها ازاى ببساطة الكورس 'عملى' ربنا يبارك فيك يا هندسة ويحفظك ويزيدك من علمه و أسأل إلا يكون كلامى هذا سبب فى فتنة لك بحبك فى الله",
+    name: "Noor Eldeen Mohammad",
+    role: "",
+    imgSrc: "",
+  },
+  // {
+  //   quote:
+  //     "Consectetur voluptate pariatur dolore laboris. Eiusmod dolor aute ut nulla pariatur officia consequat aute amet exercitation.",
+  //   name: "Chace Rodgers",
+  //   role: "CEO at Company",
+  //   imgSrc: "/tag-profile.png",
+  // },
+  // {
+  //   quote:
+  //     "تخطى توقعاتي اوي اوي الحمد لله فعلا الكورس اللي اخدته مع المهندس عبد الرحمن تاج فرق معايا جدا الحمد لله سواء في موضوع الكورس نفسه اللي هو ال sales أو عامة في حياتي الشخصية لأنه باختصار بيحسن من طريقة تعاملك مع الناس وبتقدر توصل لاحتياجهم والمشكلة اللي بتواجهم بالضبط وده عن طريق ال techniques والحاجات اللي بتتعلمها في الكورس فعلا بتنقلك بفضل الله نقلة نوعية في تعاملك مع الناس. فلو انت مهتم بتحسين مهارات التواصل مع الناس أو ازاي تبيع اكتر فأنا بكل ثقة ارشحلك الكورس ده فعلا يستحق طب تفتكر ليه لأن البشهندس جمعلك فيه كورسات كتير في كورس واحد مع أهم حاجة ألا وهي التطبيق العملي يعني وانت في الكورس هتتعلم تعمل الموضوع ازاي لا وكمان تاخد زي واجب عملي تطبق طول الاسبوع وترجع تعرض المشكلات اللي اتعرضت ليها وهو هيساعدك تحلها إن شاء الله. فبعد كل ده انا هسيبك انت تقرر هتاخد الكورس ده ولا لا.",
+  //   name: "مروان أيمن",
+  //   role: "",
+  //   imgSrc: "",
+  // },
+  {
+    quote:
+      "السلام عليكم بصراحة كورس المبيعات مع بشمهندس عبدالرحمن تاج كان حاجة جميلة جدا ما شاء الله بيفيدك فى حياتك بشكل عام بالإضافة إلي الجانب التقني طبعا واخيرا هتتعلم من حضرته صفات كتير حلوة كمان شخصية",
+    name: "Mostafa Kandeel ",
+    role: "",
+    imgSrc: "",
+  },
+  // {
+  //   quote:
+  //     "محتوى مفيد ومجهود كبير في إفادة المتلقي. من ضمن الدورات التي شاركت فيها كورس مهارات البيع الاحترافي وتجربتي فيه تتلخص في النقاط التالية: - أي كورس في أي مجال لا ينقلك نقلة لولبية من الصفر إلى الاحتراف لأن عملية التعلم لا تأتي إسراعاً لكن دائما سترى المقدم يحاول وضع معلومات كافية ومفيدة وكثيرة مع محاولات للتطبيق خلال فترة الكورس وواجب منزلي ووقت للأسئلة والحوار داخل وخارج المحاضرات، هذا كله من أجل وضعك على الطريق الصحيح وإرشادك لتكمل أنت. هذا الكورس جمع كل ما سبق بشكل منهجي ومرتب. - التحضير الجيد والتفاني في الشرح. - المتابعة الجيدة والمستمرة طوال فترة الكورس. - المرونة في الإلقاء والتقديم وجعل المحاضرات ممتعة مرنة ودية هذا غير مراعاة الحاضرين والسؤال عليهم وتسهيل الإجراءات ونظام الدفع والأعذار عليهم. - المحتوى كان مبني على خبرة تراكمية كبيرة ومتداخلة مع مجالات أخرى كالتسويق ومواضيع أخرى كمهارات التواصل والتفاوض وتم تجميعه من مختلف المصادر العربية والغربية التي تناولته من مختلف الزوايا ومن مدارس مختلفة. - أهم ما يميز المحتوى طريقة سرد المحاضر والتي اعتمدت على سرد الكثير من القصص والامثلة مع الأخطاء والمحاولات الفاشلة التي ارتكبها في السابق لتبرز المعلومة بشكل عملي جدا. - من أهم الأشياء التي تجعلك تشعر بقرب المحاضر في إيصال المعلومة لك هو عدم بعده الشديد عنك سواءا في السن أو الخبرة وهذا يجعله مؤهلا لاستذكار جميع التفاصيل ونمط التفكير التي كان يطبقها في الماضي القريب، وبهذا جعل شخصية الجمهور المستهدف هي نفس شخصيته منذ سنتين فكأنه يحاور نفسه القديمة عديمة الخبرة وأنت كمستمع تجده يحاورك أنت. - بشكل عام عندما يتحصل الإنسان على معلومة جديدة ثم يتركها تؤثر عليه ويطبقها لفترة يكون جاهزا لشرحها لأي شخص آخر جاهل بها وسيستطيع تبسيطها له وفهم جهله واستيعاب عدم إدراكه لها في البداية ذلك لأنه لم ينسى نفسه عندما كان كذلك وهذا تحقق في كورس مهارات البيع بسبب أن المحاضر أعد جيدا لما سيقوله وبسبب فارق السن الصغير فلو كان دكتورا جامعيا قد لا يستطيع استذكار كيف كانت بداياته وكيف كان يعمل دماغه قبل حصوله على الخبرة بسهولة وبالتالي لن يستطيع الوصول إلى أدمغة الحاضرين لأنه فقد التواصل إلى عقولهم. المحاضر هنا كان واعي بهذه النقطة واستطاع الوصول إلى عقول المستمعين نظرا لتحصيله الكبير وإعداده ",
+  //   name: "براء وليد",
+  //   role: "",
+  //   imgSrc: "",
+  // },
+];
 
 export default function Home() {
   return (
-    <div className="grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20 font-[family-name:var(--font-geist-sans)]">
-      <main className="flex flex-col gap-8 row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
+    <div className="flex flex-col  gap-y-16">
+      <div className="h-16 py-8 ">
+        <Link href="/">
+          <h1 className="text-[var(--bg2)] flex items-center justify-center text-white text-3xl font-bold font-sans bg-[var(--bg2)] max-w-fit px-2 pb-2 rounded-xl ">
+            {" "}
+            Tag Gurus
+          </h1>
+        </Link>
+      </div>
+      <div className="lg:flex-row flex flex-col justify-center items-center gap-y-8 gap-x-16">
+        <img
+          src={TagImage.src}
+          className="items-center w-[400px] h-100 rounded-3xl mb-8"
         />
-        <ol className="list-inside list-decimal text-sm text-center sm:text-left font-[family-name:var(--font-geist-mono)]">
-          <li className="mb-2">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] px-1 py-0.5 rounded font-semibold">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:min-w-44"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+        <div className="">
+          <h1 className="text-[var(--bg2)] text-center text-4xl font-bold mb-4">
+            {" "}
+            دبلومة احتراف البيع والإقناع{" "}
+          </h1>
+          <p className="text-white text-center text-2xl leading-9">
+            أهلاً وسهلاً بكم جميعًا زملائي الأعزاء المديرين المحترمين، في الدورة
+            الخامسة من دبلومة احتراف البيع والإقناع، يسعدنا أن نبدأ هذه الرحلة
+            التعليمية معًا، حيث نطمح إلى تعزيز مهاراتكم في فنون البيع وتقنيات
+            الإقناع الأكثر فعالية
+          </p>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-6 flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
+      </div>
+
+      <div className="flex flex-col justify-center items-center gap-y-4">
+        <h1 className="text-white text-center text-2xl leading-9">
+          {" "}
+          في 5 دقائق فقط احترف أسرار وخبايا فن البيع والاقناع
+        </h1>
+        <div className="w-full flex items-center justify-center">
+          <video
+            className="w-[100%] sm:w-[90%] rounded-3xl "
+            controls
+            preload="none"
+            src="/TagVed.mp4"
+            poster="/thum.png"
+            autoPlay
+          >
+            <source src="/TagVed.mp4" type="video/mp4" />
+          </video>
+        </div>
+        <p className="text-white text-center text-2xl">
+          لمعرفة تفاصيل الدبلومة كاملة{" "}
+        </p>
+        <Link
+          href="https://docs.google.com/forms/d/1X_GWBmVclvsV5q7w9AHSEc4SB6RSpdqu5ClZfzbeuQU/viewform?edit_requested=true"
+          className="bg-[var(--bg2)] p-4 w-[300px] text-center text-3xl font-bold font-serif rounded-lg text-white "
         >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
+          <button>احجز مكالمتك الآن</button>
+        </Link>
+      </div>
+      <div className="flex justify-center items-center">
+        <div className="container">
+          <h1 className="w-full text-center text-4xl text-[var(--bg2)]">
+            أراء المتدربين
+          </h1>
+          <TestimonialSlider testimonials={testimonials} />
+        </div>
+        {/* <div className="container">
+          <h1>shadcn cards</h1>
+          <TestimonialSliderCard testimonials={testimonials} />
+        </div> */}
+      </div>
     </div>
   );
 }
